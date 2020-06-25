@@ -10,6 +10,9 @@ This part of the project comprises two days:
    on the BSTNode class.
 """
 
+from queue import Queue
+from stack import Stack
+
 
 class BSTNode:
     def __init__(self, value):
@@ -84,11 +87,35 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        # create a queue for node
+        # add the firs node to the queue
+        # while queue is not empty
+        #  remove the first from the queue
+        # print the removed node
+        # add all children into the queue
+        q = Queue()
+        q.enqueue(node)
+        while q.storage is not None and q.len is not None:
+            removed_q = q.dequeue()
+            print("QUEUE", removed_q.value)
+            if removed_q.left:
+                q.enqueue(removed_q.left)
+            if removed_q.right:
+                q.enqueue(removed_q.right)
+            # q.enqueue(removed_q.left)
+            # q.enqueue(removed_q.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
+
     def dft_print(self, node):
+        # create a stack for node
+        # add the node to the stack
+        # while teh stack is not empty
+        # get the current node from the top of the stack
+        # print that node
+        # add all children to the stack
+        # remember, the oreder you add the children, will matter
         pass
 
     # Stretch Goals -------------------------
@@ -101,3 +128,15 @@ class BSTNode:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
+
+
+bst = BSTNode(1)
+bst.insert(8)
+bst.insert(5)
+bst.insert(7)
+bst.insert(6)
+bst.insert(3)
+bst.insert(4)
+bst.insert(2)
+
+bst.bft_print(bst)
