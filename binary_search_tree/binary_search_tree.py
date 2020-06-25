@@ -95,15 +95,13 @@ class BSTNode:
         # add all children into the queue
         q = Queue()
         q.enqueue(node)
-        while q.storage is not None and q.len is not None:
-            removed_q = q.dequeue()
-            print("QUEUE", removed_q.value)
-            if removed_q.left:
-                q.enqueue(removed_q.left)
-            if removed_q.right:
-                q.enqueue(removed_q.right)
-            # q.enqueue(removed_q.left)
-            # q.enqueue(removed_q.right)
+        while len(q) > 0:
+            top_node = q.dequeue()
+            print(top_node.value)
+            if top_node.left:
+                q.enqueue(top_node.left)
+            if top_node.right:
+                q.enqueue(top_node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
