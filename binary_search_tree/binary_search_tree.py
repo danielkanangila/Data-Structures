@@ -96,12 +96,12 @@ class BSTNode:
         q = Queue()
         q.enqueue(node)
         while len(q) > 0:
-            top_node = q.dequeue()
-            print(top_node.value)
-            if top_node.left:
-                q.enqueue(top_node.left)
-            if top_node.right:
-                q.enqueue(top_node.right)
+            current_node = q.dequeue()
+            print(current_node.value)
+            if current_node.left:
+                q.enqueue(current_node.left)
+            if current_node.right:
+                q.enqueue(current_node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
@@ -114,12 +114,21 @@ class BSTNode:
         # print that node
         # add all children to the stack
         # remember, the oreder you add the children, will matter
-        pass
+        s = Stack()
+        s.push(node)
+        while len(s) > 0:
+            current_node = s.pop()
+            print(current_node.value)
+            if current_node.left:
+                s.push(current_node.left)
+            if current_node.right:
+                s.push(current_node.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
+
     def pre_order_dft(self, node):
         pass
 
@@ -137,4 +146,4 @@ bst.insert(3)
 bst.insert(4)
 bst.insert(2)
 
-bst.bft_print(bst)
+bst.dft_print(bst)
